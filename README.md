@@ -76,7 +76,7 @@ src/
 
 - **LinkedIn**: [Dhiraj Salunke](https://linkedin.com/in/dhiraj-salunke-259169222)
 - **GitHub**: [@Dhiraj96k](https://github.com/Dhiraj96k)
-- **Email**: #
+- **Email**: [@Email](dhirajsalunke7350@gmail.com)
 
 ---
 
