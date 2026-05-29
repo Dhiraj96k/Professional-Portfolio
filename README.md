@@ -1,30 +1,3 @@
-<div align="center">
-  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/Vite-8.0-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Framer_Motion-11.0-ff0055?style=for-the-badge&logo=framer" alt="Framer Motion" />
-  
-  <br />
-  <br />
-  
-  <h1 align="center">Alchemy Portfolio — Digital Alchemist</h1>
-  
-  <p align="center">
-    A premium, high-impact digital portfolio designed to transform complex engineering into elegant digital narratives.
-    <br />
-    <a href="#getting-started"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/Dhiraj96k/Professional-Portfolio">View Demo</a>
-    ·
-    <a href="https://github.com/Dhiraj96k/Professional-Portfolio/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Dhiraj96k/Professional-Portfolio/issues">Request Feature</a>
-  </p>
-</div>
-
----
-
 ## 🌟 Overview
 
 This project is a modern, responsive, and highly interactive single-page portfolio built for developers who want to stand out. It focuses on high-end interactivity, sophisticated typography, and modern UI patterns like dark mode glassmorphism and subtle micro-animations.
