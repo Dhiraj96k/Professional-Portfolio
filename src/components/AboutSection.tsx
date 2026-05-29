@@ -1,11 +1,35 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useSpring, useTransform, animate } from "framer-motion";
 import { User, Briefcase, GraduationCap } from "lucide-react";
 
 const stats = [
-  { icon: Briefcase, value: "5+", label: "Years Experience" },
-  { icon: User, value: "500+", label: "Linked Connection" },
-  { icon: GraduationCap, value: "15+", label: "Projects Done" },
+  { icon: Briefcase, value: 5, suffix: "+", label: "Years Experience" },
+  { icon: User, value: 500, suffix: "+", label: "LinkedIn Connections" },
+  { icon: GraduationCap, value: 15, suffix: "+", label: "Projects Done" },
 ];
+
+const AnimatedNumber = ({ value }: { value: number }) => {
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [displayValue, setDisplayValue] = useState(0);
+
+  return (
+    <motion.span
+      onViewportEnter={() => {
+        if (!hasAnimated) {
+          animate(0, value, {
+            duration: 2,
+            ease: "easeOut",
+            onUpdate: (v) => setDisplayValue(Math.round(v)),
+          });
+          setHasAnimated(true);
+        }
+      }}
+      viewport={{ once: true }}
+    >
+      {displayValue}
+    </motion.span>
+  );
+};
 
 const AboutSection = () => (
   <section id="about" className="section-about py-32 relative overflow-hidden">
@@ -55,7 +79,9 @@ const AboutSection = () => (
             >
               <div className="flex flex-col">
                 <s.icon className="text-primary/40 mb-4" size={32} />
-                <span className="text-4xl md:text-5xl font-display font-black text-foreground">{s.value}</span>
+                <span className="text-4xl md:text-5xl font-display font-black text-foreground">
+                  <AnimatedNumber value={s.value} />{s.suffix}
+                </span>
                 <span className="text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground mt-2">{s.label}</span>
               </div>
               

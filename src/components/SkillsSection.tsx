@@ -77,6 +77,11 @@ const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
 };
 
 
+const supplementarySkills = [
+  "TypeScript", "Tailwind CSS", "Node.js", "Docker", "Git", "Figma", 
+  "GraphQL", "MongoDB", "PostgreSQL", "AWS", "Firebase"
+];
+
 const SkillsSection = () => (
   <section id="skills" className="section-skills py-32 relative overflow-hidden">
     <div className="container mx-auto px-4 relative z-10">
@@ -95,10 +100,23 @@ const SkillsSection = () => (
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-24">
         {skills.map((skill, i) => (
           <SkillCard key={skill.name} skill={skill} index={i} />
         ))}
+      </div>
+
+      <div className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-full glass border border-white/5 py-4 flex">
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[hsl(var(--section-skills-bg))] to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[hsl(var(--section-skills-bg))] to-transparent z-10" />
+        
+        <div className="animate-marquee whitespace-nowrap flex items-center">
+          {[...supplementarySkills, ...supplementarySkills].map((skill, i) => (
+            <span key={i} className="mx-8 text-xl font-display font-bold text-muted-foreground/50 hover:text-primary transition-colors cursor-default">
+              {skill}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   </section>

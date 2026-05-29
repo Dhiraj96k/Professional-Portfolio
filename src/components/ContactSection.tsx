@@ -3,19 +3,35 @@ import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
 import { Linkedin, Github } from "./SocialIcons";
 import Magnetic from "./Magnetic";
+import { toast } from "sonner";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const socials = [
-    { icon: Linkedin, href: "https://www.linkedin.com/in/dhiraj-salunke-259169222", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/personalprofileofme/", label: "LinkedIn" },
     { icon: Github, href: "https://github.com/Dhiraj96k", label: "GitHub" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:hello@example.com?subject=Portfolio Contact from ${form.name}&body=${encodeURIComponent(form.message)}`;
-    window.open(mailto);
+    if (!form.name || !form.email || !form.message) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
+    // Simulate API call
+    toast.promise(
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+      {
+        loading: "Sending message...",
+        success: () => {
+          setForm({ name: "", email: "", message: "" });
+          return "Message sent successfully!";
+        },
+        error: "Failed to send message",
+      }
+    );
   };
 
   return (

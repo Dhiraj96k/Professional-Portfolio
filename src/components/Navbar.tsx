@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Magnetic from "./Magnetic";
@@ -12,6 +12,29 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = links.map(l => l.href.substring(1));
+      let current = "";
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            current = section;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl z-50 glass rounded-full px-6 transition-all duration-300">
@@ -29,10 +52,10 @@ const Navbar = () => {
               <motion.a
                 href={l.href}
                 whileHover={{ y: -2 }}
-                className="relative text-xs uppercase tracking-widest font-semibold text-muted-foreground hover:text-primary transition-colors group px-4 py-2"
+                className={`relative text-xs uppercase tracking-widest font-semibold hover:text-primary transition-colors group px-4 py-2 ${activeSection === l.href.substring(1) ? "text-primary" : "text-muted-foreground"}`}
               >
                 {l.label}
-                <span className="absolute -bottom-1 left-4 right-4 h-0.5 bg-primary transition-all duration-300 w-0 group-hover:w-[calc(100%-2rem)]" />
+                <span className={`absolute -bottom-1 left-4 right-4 h-0.5 bg-primary transition-all duration-300 ${activeSection === l.href.substring(1) ? "w-[calc(100%-2rem)]" : "w-0 group-hover:w-[calc(100%-2rem)]"}`} />
               </motion.a>
             </Magnetic>
           ))}

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroArt from "@/assets/hero-art.jpg";
@@ -23,6 +24,38 @@ const HeroSection = () => {
     },
   };
 
+  const wordVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+      },
+    },
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
     <section id="hero" className="section-hero min-h-screen flex items-center relative overflow-hidden pt-24 pb-12">
       {/* Dynamic Background Elements */}
@@ -40,22 +73,30 @@ const HeroSection = () => {
             <p className="text-secondary font-bold tracking-[0.3em] uppercase text-xs">Available for Freelance</p>
           </motion.div>
           
-          <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-display font-black leading-[0.9] mb-8 overflow-hidden">
+          <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-display font-black leading-[0.9] mb-8 overflow-hidden flex flex-col">
             <motion.span 
-              className="block"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.5 }}
+              className="block overflow-hidden flex"
+              variants={wordVariants}
+              initial="hidden"
+              animate="visible"
             >
-              DIGITAL
+              {"DIGITAL".split("").map((char, index) => (
+                <motion.span key={index} variants={letterVariants}>
+                  {char}
+                </motion.span>
+              ))}
             </motion.span>
             <motion.span 
-              className="text-gradient-primary block"
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.7 }}
+              className="text-gradient-primary block overflow-hidden flex"
+              variants={wordVariants}
+              initial="hidden"
+              animate="visible"
             >
-              ALCHEMIST
+              {"ALCHEMIST".split("").map((char, index) => (
+                <motion.span key={index} variants={letterVariants}>
+                  {char}
+                </motion.span>
+              ))}
             </motion.span>
           </motion.h1>
           
@@ -88,14 +129,24 @@ const HeroSection = () => {
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
           className="relative"
+          style={{
+            x: mousePosition.x * -1,
+            y: mousePosition.y * -1,
+          }}
         >
-          <div className="relative z-10 aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-[2rem] border border-white/10 glass-card p-4">
+          <motion.div 
+            className="relative z-10 aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-[2rem] border border-white/10 glass-card p-4"
+            style={{
+              x: mousePosition.x * 2,
+              y: mousePosition.y * 2,
+            }}
+          >
              <img
               src={heroArt}
               alt="Creative portrait"
               className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700 pointer-events-none"
             />
-          </div>
+          </motion.div>
           
           {/* Decorative elements */}
           <div className="absolute -bottom-8 -left-8 w-32 h-32 border-l-2 border-b-2 border-primary/30 rounded-bl-3xl" />
