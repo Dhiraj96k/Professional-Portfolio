@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import { ArrowDown } from "lucide-react";
-import heroArt from "@/assets/hero-art.jpg";
+import heroArt from "@/assets/hero-art.png";
 
 const HeroSection = () => {
   const containerVariants: Variants = {
@@ -24,7 +24,7 @@ const HeroSection = () => {
     },
   };
 
-  const wordVariants = {
+  const wordVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -34,7 +34,7 @@ const HeroSection = () => {
     },
   };
 
-  const letterVariants = {
+  const letterVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
