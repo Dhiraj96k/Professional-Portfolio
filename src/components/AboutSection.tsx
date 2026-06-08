@@ -3,7 +3,7 @@ import { motion, useSpring, useTransform, animate } from "framer-motion";
 import { User, Briefcase, GraduationCap } from "lucide-react";
 
 const stats = [
-  { icon: Briefcase, value: 5, suffix: "+", label: "Years Experience" },
+  { icon: Briefcase, value: 10, suffix: "+", label: "Technologies Learned" },
   { icon: User, value: 500, suffix: "+", label: "LinkedIn Connections" },
   { icon: GraduationCap, value: 15, suffix: "+", label: "Projects Done" },
 ];
