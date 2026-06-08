@@ -9,8 +9,8 @@ const projects = [
     tags: ["React", "Spring Boot", "MySQL", "JWT"],
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2000&auto=format&fit=crop",
     size: "large",
-    github: "https://github.com/Dhiraj96k/expense-tracker",
-    live: "https://example.com",
+    github: "https://github.com/Dhiraj96k/MoneyManager-FE",
+    live: "https://github.com/Dhiraj96k/MoneyManager-FE",
   },
   {
     title: "Complaint System",
@@ -18,8 +18,8 @@ const projects = [
     tags: ["React", "Spring Data", "MySQL"],
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop",
     size: "small",
-    github: "https://github.com/Dhiraj96k/complaint-system",
-    live: "https://example.com",
+    github: "https://github.com/Dhiraj96k/SmartComplaint",
+    live: "https://github.com/Dhiraj96k/SmartComplaint",
   },
   {
     title: "Book Store",
@@ -27,8 +27,8 @@ const projects = [
     tags: ["JavaScript", "PHP", "PostgreSQL"],
     image: "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=2000&auto=format&fit=crop",
     size: "medium",
-    github: "https://github.com/Dhiraj96k/book-store",
-    live: "https://example.com",
+    github: "https://github.com/Dhiraj96k/Book-Store",
+    live: "https://github.com/Dhiraj96k/Book-Store",
   },
 ];
 
